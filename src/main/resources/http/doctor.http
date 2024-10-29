@@ -1,0 +1,41 @@
+
+### getAll
+GET {{URL}}
+
+### getById
+GET {{URL}}/1
+
+### getBySpeciality
+GET {{URL}}/speciality/PSYCHIATRY
+
+### getByBirthDateRange
+GET {{URL}}/birthdate-range/1970-01-01/1990-01-01
+
+### createDoctor
+POST {{URL}}
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "CREATED DOCTOR",
+  "dateOfBirth": "1978-09-12",
+  "yearOfGraduation": 2003,
+  "nameOfClinic": "Eastside Health Services",
+  "speciality": "SURGERY"
+}
+
+### updateDoctor
+PUT {{URL}}/4
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "UPDATED CREATED DOCTOR",
+  "dateOfBirth": "1978-09-12",
+  "yearOfGraduation": 2003,
+  "nameOfClinic": "Eastside Health Services",
+  "speciality": "SURGERY"
+}
+
+### deleteDoctor
+DELETE {{URL}}/4
