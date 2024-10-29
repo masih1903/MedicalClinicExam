@@ -3,6 +3,7 @@ package app.entities;
 import app.dtos.DoctorDTO;
 import app.enums.Speciality;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -47,7 +48,8 @@ public class Doctor {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
-    //@JsonManagedReference // Prevents infinite loop by managing this side of the relationship
+    //@JsonManagedReference // Prevents infinite loop by managing this side of the relationship and shows appointments also connected to doctor
+    @JsonIgnore
     private List<Appointment> appointments = new ArrayList<>();
 
 

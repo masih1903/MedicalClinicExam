@@ -2,6 +2,7 @@ package app.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,8 @@ public class Appointment {
     private String comment;
 
     @ManyToOne
-    //@JsonBackReference // Prevents infinite loop by managing this side of the relationship
+    //@JsonBackReference // Prevents infinite loop by managing this side of the relationship and shows appointments also connected to doctor
+    @JsonIgnore
     private Doctor doctor;
 
     public Appointment(String clientName, LocalDate date, LocalTime time, String comment) {

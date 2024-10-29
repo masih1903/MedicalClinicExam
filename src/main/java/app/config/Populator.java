@@ -1,7 +1,7 @@
 package app.config;
 
 import app.daos.DoctorDAO;
-import app.daos.DoctorMockDAO;
+import app.daos.mock.DoctorMockDAO;
 import app.dtos.DoctorDTO;
 import app.entities.Appointment;
 import app.entities.Doctor;

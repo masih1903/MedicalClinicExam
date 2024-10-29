@@ -37,10 +37,16 @@ public class DoctorController implements IController {
 
             ctx.res().setStatus(200);
             ctx.json(doctorDTOs, DoctorDTO.class);
-        } catch (Exception e) {
+        }
+
+        catch (ApiException e) {
+            ctx.status(500).json(new Message(500, e.getMessage(), e.getTimeStamp()));
+        }
+
+        catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -58,13 +64,17 @@ public class DoctorController implements IController {
             DoctorDTO countryDTO = new DoctorDTO(doctor);
             ctx.res().setStatus(200);
             ctx.json(countryDTO, DoctorDTO.class);
-
-        } catch (Exception e) {
-            log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
         }
 
+        catch (ApiException e) {
+            ctx.status(500).json(new Message(500, e.getMessage(), e.getTimeStamp()));
+        }
+
+        catch (Exception e) {
+            log.error("500 - {}", e.getMessage(), e);
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
+        }
     }
 
     @Override
@@ -79,19 +89,22 @@ public class DoctorController implements IController {
             List<Doctor> doctors = doctorDAO.doctorBySpeciality(speciality);
 
             if (doctors.isEmpty()) {
+                String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
                 ctx.res().setStatus(404);
-                ctx.json(new Message(404, "No doctors found for the given speciality"), Message.class);
+                ctx.json(new Message(404, "No doctors found for the given speciality", timeStamp), Message.class);
             } else {
                 ctx.res().setStatus(200);
                 ctx.json(doctors);
             }
-        } catch (IllegalArgumentException e) {
+
+        }
+        catch (IllegalArgumentException e) {
             log.error("Invalid speciality format: {}", e.getMessage());
             throw new ApiException(400, "Invalid speciality format");
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -108,8 +121,9 @@ public class DoctorController implements IController {
             List<Doctor> doctors = doctorDAO.doctorByBirthdateRange(fromDate, toDate);
 
             if (doctors.isEmpty()) {
+                String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
                 ctx.res().setStatus(404);
-                ctx.json(new Message(404, "No doctors found within the specified birthdate range"));
+                ctx.json(new Message(404, "No doctors found within the specified birthdate range", timeStamp), Message.class);
             } else {
                 ctx.res().setStatus(200);
                 ctx.json(doctors, DoctorDTO.class); // Use DoctorDTO to control JSON output
@@ -119,8 +133,8 @@ public class DoctorController implements IController {
             throw new ApiException(400, "Invalid date format. Expected format is YYYY-MM-DD.");
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -138,10 +152,16 @@ public class DoctorController implements IController {
 
             // == response ==
             ctx.status(201).json(new DoctorDTO(doctor));  // Return the created CountryDTO in the response
-        } catch (Exception e) {
+        }
+
+        catch (ApiException e) {
+            ctx.status(500).json(new Message(500, e.getMessage(), e.getTimeStamp()));
+        }
+
+        catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -157,8 +177,9 @@ public class DoctorController implements IController {
             Doctor existingDoctor = doctorDAO.getById(id);
 
             if (existingDoctor == null) {
+                String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
                 ctx.res().setStatus(404);
-                ctx.json(new Message(404, "Doctor not found"), Message.class);
+                ctx.json(new Message(404, "Doctor not found", timeStamp), Message.class);
                 return;
             }
 
@@ -181,8 +202,8 @@ public class DoctorController implements IController {
             throw new ApiException(400, "Invalid hotel ID format");
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -197,8 +218,9 @@ public class DoctorController implements IController {
             Doctor doctor = doctorDAO.getById(id);
 
             if (doctor == null) {
+                String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
                 ctx.res().setStatus(404);
-                ctx.json(new Message(404, "Doctor not found"), Message.class);
+                ctx.json(new Message(404, "Doctor not found", timeStamp), Message.class);
                 return;
             }
 
@@ -212,8 +234,8 @@ public class DoctorController implements IController {
             throw new ApiException(400, "Invalid doctor ID format");
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 }

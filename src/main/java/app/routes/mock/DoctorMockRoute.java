@@ -1,7 +1,7 @@
-package app.routes;
+package app.routes.mock;
 
 
-import app.controllers.DoctorMockController;
+import app.controllers.mock.DoctorMockController;
 
 import io.javalin.apibuilder.EndpointGroup;
 

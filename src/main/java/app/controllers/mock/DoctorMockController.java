@@ -1,6 +1,6 @@
-package app.controllers;
+package app.controllers.mock;
 
-import app.daos.DoctorMockDAO;
+import app.daos.mock.DoctorMockDAO;
 import app.dtos.DoctorDTO;
 import app.entities.Message;
 import app.enums.Speciality;
@@ -28,8 +28,8 @@ public class DoctorMockController {
             ctx.json(doctorDTOList);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -41,8 +41,8 @@ public class DoctorMockController {
             ctx.json(doctorDTO, DoctorDTO.class);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -54,8 +54,8 @@ public class DoctorMockController {
             ctx.json(doctorDTOList, DoctorDTO.class);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -69,8 +69,8 @@ public class DoctorMockController {
             ctx.json(doctorDTOList, DoctorDTO.class);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -83,8 +83,8 @@ public class DoctorMockController {
             ctx.json(newDoctorDTO, DoctorDTO.class);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -98,8 +98,8 @@ public class DoctorMockController {
             ctx.json(updatedDoctorDTO, DoctorDTO.class);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 
@@ -110,8 +110,8 @@ public class DoctorMockController {
             ctx.res().setStatus(204);
         } catch (Exception e) {
             log.error("500 - {}", e.getMessage(), e);
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
-            ctx.status(500).json(new Message(500, e.getMessage() + " - Timestamp: " + timestamp));
+            String timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+            ctx.status(500).json(new Message(500, e.getMessage(), timeStamp));
         }
     }
 }

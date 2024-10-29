@@ -1,11 +1,6 @@
 package app;
 
 import app.config.AppConfig;
-import app.config.HibernateConfig;
-import app.config.Populator;
-import app.daos.DoctorDAO;
-import app.daos.DoctorMockDAO;
-import jakarta.persistence.EntityManagerFactory;
 
 public class Main {
     public static void main(String[] args) {

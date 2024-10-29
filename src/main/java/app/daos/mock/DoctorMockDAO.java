@@ -1,5 +1,6 @@
-package app.daos;
+package app.daos.mock;
 
+import app.daos.IDAO;
 import app.dtos.DoctorDTO;
 import app.enums.Speciality;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class DoctorMockDAO implements IDAOMock<DoctorDTO> {
+public class DoctorMockDAO implements IDAO<DoctorDTO> {
 
     private static List<DoctorDTO> doctorDTOList = new ArrayList<>();
 

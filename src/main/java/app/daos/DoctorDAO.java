@@ -9,7 +9,7 @@ import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.List;
 
-public class DoctorDAO implements IDAOMock<Doctor> {
+public class DoctorDAO implements IDAO<Doctor> {
 
     private final EntityManagerFactory emf;
 
