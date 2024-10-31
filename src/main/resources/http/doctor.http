@@ -3,7 +3,7 @@
 GET {{URL}}
 
 ### getById
-GET {{URL}}/1
+GET {{URL}}/2
 
 ### getBySpeciality
 GET {{URL}}/speciality/PSYCHIATRY
@@ -16,7 +16,6 @@ POST {{URL}}
 Content-Type: application/json
 
 {
-  "id": 6,
   "name": "CREATED DOCTOR",
   "dateOfBirth": "1978-09-12",
   "yearOfGraduation": 2003,
@@ -25,17 +24,16 @@ Content-Type: application/json
 }
 
 ### updateDoctor
-PUT {{URL}}/4
+PUT {{URL}}/13
 Content-Type: application/json
 
 {
-  "id": 6,
-  "name": "UPDATED CREATED DOCTOR",
-  "dateOfBirth": "1978-09-12",
-  "yearOfGraduation": 2003,
-  "nameOfClinic": "Eastside Health Services",
-  "speciality": "SURGERY"
+  "name": "UPDATED DOCTOR",
+  "dateOfBirth": "1999-12-10",
+  "yearOfGraduation": 2024,
+  "nameOfClinic": "Westside Health Services",
+  "speciality": "PSYCHIATRY"
 }
 
 ### deleteDoctor
-DELETE {{URL}}/4
+DELETE {{URL}}/13

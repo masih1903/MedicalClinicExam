@@ -71,14 +71,12 @@ public class Doctor {
     }
 
     @PrePersist
-    protected void onCreate()
-    {
+    protected void onCreate() {
         createdAt = LocalDateTime.now();
     }
 
     @PreUpdate
-    protected void onUpdate()
-    {
+    protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
 }

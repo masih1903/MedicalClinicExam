@@ -15,8 +15,8 @@ public class DoctorRoute {
     private final DoctorDAO doctorDao = new DoctorDAO(emf);
     DoctorController doctorController = new DoctorController(doctorDao);
 
-    public EndpointGroup getDoctorRoutes()
-    {
+
+    public EndpointGroup getDoctorRoutes() {
         return () ->
         {
             get("/", doctorController::getAll);

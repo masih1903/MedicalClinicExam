@@ -32,6 +32,14 @@ public class DoctorDTO {
         this.speciality = speciality;
     }
 
+    public DoctorDTO(String name, LocalDate dateOfBirth, int yearOfGraduation, String nameOfClinic, Speciality speciality) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.yearOfGraduation = yearOfGraduation;
+        this.nameOfClinic = nameOfClinic;
+        this.speciality = speciality;
+    }
+
     public DoctorDTO(Doctor doctor) {
         this.id = doctor.getId();
         this.name = doctor.getName();
@@ -44,6 +52,4 @@ public class DoctorDTO {
     public static List<DoctorDTO> toDoctorDTOList(List<Doctor> doctors) {
         return doctors.stream().map(DoctorDTO::new).collect(Collectors.toList());
     }
-
-
 }

@@ -1,6 +1,7 @@
 package app.daos;
 
 
+import app.dtos.DoctorDTO;
 import app.enums.Speciality;
 
 import java.time.LocalDate;
@@ -16,9 +17,9 @@ public interface IDAO<T> {
 
     List<T> doctorByBirthdateRange(LocalDate from, LocalDate to);
 
-    T createDoctor(T t);
+    T createDoctor(DoctorDTO doctorDTO);
 
-    T update(Integer id, T t);
+    T update(Integer id, DoctorDTO doctorDTO);
 
     void delete(Integer id);
 }

@@ -1,5 +1,6 @@
 package app.daos;
 
+import app.dtos.DoctorDTO;
 import app.entities.Doctor;
 import app.enums.Speciality;
 import jakarta.persistence.EntityManager;
@@ -52,9 +53,10 @@ public class DoctorDAO implements IDAO<Doctor> {
     }
 
     @Override
-    public Doctor createDoctor(Doctor doctor) {
+    public Doctor createDoctor(DoctorDTO doctorDTO) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
+            Doctor doctor = new Doctor(doctorDTO);
             em.persist(doctor);
             em.getTransaction().commit();
             return doctor;
@@ -62,14 +64,16 @@ public class DoctorDAO implements IDAO<Doctor> {
     }
 
     @Override
-    public Doctor update(Integer id, Doctor doctor) {
+    public Doctor update(Integer id, DoctorDTO doctorDTO) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
             Doctor doctorToUpdate = em.find(Doctor.class, id);
-            doctorToUpdate.setDateOfBirth(doctor.getDateOfBirth());
-            doctorToUpdate.setYearOfGraduation(doctor.getYearOfGraduation());
-            doctorToUpdate.setNameOfClinic(doctor.getNameOfClinic());
-            doctorToUpdate.setSpeciality(doctor.getSpeciality());
+            doctorToUpdate.setName(doctorDTO.getName());
+            doctorToUpdate.setDateOfBirth(doctorDTO.getDateOfBirth());
+            doctorToUpdate.setYearOfGraduation(doctorDTO.getYearOfGraduation());
+            doctorToUpdate.setNameOfClinic(doctorDTO.getNameOfClinic());
+            doctorToUpdate.setSpeciality(doctorDTO.getSpeciality());
+            em.merge(doctorToUpdate);
             em.getTransaction().commit();
             return doctorToUpdate;
         }

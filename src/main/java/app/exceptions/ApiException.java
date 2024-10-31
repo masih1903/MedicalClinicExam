@@ -1,9 +1,7 @@
 package app.exceptions;
 
 import lombok.Getter;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.Timestamp;
 
 @Getter
 public class ApiException extends RuntimeException {
@@ -14,6 +12,6 @@ public class ApiException extends RuntimeException {
     public ApiException(int statusCode, String message) {
         super(message);
         this.statusCode = statusCode;
-        this.timeStamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+        this.timeStamp = new Timestamp(System.currentTimeMillis()).toString();
     }
 }

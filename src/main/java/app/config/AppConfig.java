@@ -40,7 +40,7 @@ public class AppConfig {
         var app = io.javalin.Javalin.create(AppConfig::configuration);
         exceptionContext(app);
         app.beforeMatched(accessController::accessHandler);
-        app.error(404, ctx -> ctx.json("Resource not found"));
+        //app.error(404, ctx -> ctx.json("Resource not found"));
         app.start(ApiProps.PORT);
     }
 

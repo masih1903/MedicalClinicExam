@@ -1,3 +1,3 @@
 package app.entities;
 
-public record Message(int status, String message, String timeStamp) {}
+public record Message(int status, String message, String timestamp) {}

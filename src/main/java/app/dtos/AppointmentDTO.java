@@ -15,6 +15,4 @@ public class AppointmentDTO {
     private LocalDate date;
     private LocalTime time;
     private String comment;
-
-
 }
